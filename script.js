@@ -1,22 +1,73 @@
-function updateClock() {
-  const now = new Date();
+const clock = document.querySelector(".clock");
+const numbers = document.getElementById("numbers");
 
-  // Convert to IST (UTC +5:30)
-  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const istTime = new Date(utc + (5.5 * 3600000));
+const hour = document.getElementById("hour");
+const minute = document.getElementById("minute");
+const second = document.getElementById("second");
 
-  const hours = istTime.getHours();
-  const minutes = istTime.getMinutes();
-  const seconds = istTime.getSeconds();
+const hh = document.getElementById("hh");
+const mm = document.getElementById("mm");
+const ss = document.getElementById("ss");
+const ampm = document.getElementById("ampm");
 
-  const hourDeg = (hours % 12) * 30 + minutes * 0.5;
-  const minuteDeg = minutes * 6 + seconds * 0.1;
-  const secondDeg = seconds * 6;
+// Create Numbers 1-12
+const radius = 150;
 
-  document.getElementById("hour").style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
-  document.getElementById("minute").style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
-  document.getElementById("second").style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+for (let i = 1; i <= 12; i++) {
+
+    const angle = (i * 30 - 90) * Math.PI / 180;
+
+    const x = 175 + radius * Math.cos(angle);
+    const y = 175 + radius * Math.sin(angle);
+
+    const n = document.createElement("span");
+    n.innerText = i;
+    n.style.left = `${x}px`;
+    n.style.top = `${y}px`;
+
+    numbers.appendChild(n);
 }
 
-setInterval(updateClock, 1000);
+// Update Clock
+
+function updateClock() {
+
+    const now = new Date();
+
+    // IST
+    const ist = new Date(
+        now.toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata"
+        })
+    );
+
+    let h = ist.getHours();
+    let m = ist.getMinutes();
+    let s = ist.getSeconds();
+
+    // Analog
+
+    hour.style.transform =
+        `rotate(${(h % 12) * 30 + m * 0.5}deg)`;
+
+    minute.style.transform =
+        `rotate(${m * 6 + s * 0.1}deg)`;
+
+    second.style.transform =
+        `rotate(${s * 6}deg)`;
+
+    // Digital
+
+    const period = h >= 12 ? "PM" : "AM";
+
+    let displayHour = h % 12;
+    displayHour = displayHour ? displayHour : 12;
+
+    hh.innerText = String(displayHour).padStart(2, "0");
+    mm.innerText = String(m).padStart(2, "0");
+    ss.innerText = String(s).padStart(2, "0");
+    ampm.innerText = period;
+}
+
 updateClock();
+setInterval(updateClock, 1000);
