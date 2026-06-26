@@ -1,33 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Analog Clock</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog watch</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="clock">
-    <div class="numbers">
-      <span style="1">1</span>
-      <span style="2">2</span>
-      <span style="3">3</span>
-      <span style="4">4</span>
-      <span style="5">5</span>
-      <span style="6">6</span>
-      <span style="7">7</span>
-      <span style="8">8</span>
-      <span style="9">9</span>
-      <span style="10">10</span>
-      <span style="11">11</span>
-      <span style="12">12</span>
+
+<div class="container">
+
+    <div class="clock">
+
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+
+        <!-- Decorative Glow Dots -->
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="dot pink"></span>
+
+        <!-- Numbers -->
+        <div id="numbers"></div>
+
+        <!-- Hands -->
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second">
+            <span class="tip"></span>
+        </div>
+
+        <!-- Center -->
+        <div class="center"></div>
+
     </div>
-    <div class="hands">
-      <div class="hour" id="hour"></div>
-      <div class="minute" id="minute"></div>
-      <div class="second" id="second"></div>
+
+    <div class="digital">
+        <span id="hh"></span>
+        <span class="colon">:</span>
+        <span id="mm"></span>
+        <span id="ss"></span>
+        <span id="ampm"></span>
     </div>
-  </div>
-  <script src="script.js"></script>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
