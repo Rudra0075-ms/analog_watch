@@ -1,58 +1,214 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #1e1e2f, #2a2a40);
-  font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Tahoma,sans-serif;
 }
 
-.clock {
-  width: 300px;
-  height: 300px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  position: relative;
-  background: radial-gradient(circle, #333, #111);
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#1e2228;
 }
 
-.numbers span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transform: rotate(calc(30deg * var()));
-  font-size: 1.2rem;
-  color: #fff;
+.container{
+    width:420px;
+    padding:35px 0 25px;
+    border-radius:22px;
+    background:#2b3038;
+    box-shadow:
+        10px 10px 20px #1a1d22,
+        -8px -8px 18px #353b45;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-.numbers span::before {
-  content: attr(style);
+.clock{
+    position:relative;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:#2f343d;
+    box-shadow:
+        inset 8px 8px 18px #39404b,
+        inset -8px -8px 18px #262b33,
+        8px 8px 20px #1b1e23;
 }
 
-.hands div {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  transform-origin: bottom;
-  transform: translateX(-50%);
-  border-radius: 6px;
+/* Rings */
+
+.ring{
+    position:absolute;
+    border:2px solid rgba(0,0,0,.22);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 }
 
-.hour {
-  width: 6px;
-  height: 70px;
-  background: #ffcc00;
+.r1{
+    width:210px;
+    height:210px;
 }
 
-.minute {
-  width: 4px;
-  height: 100px;
-  background: #00ccff;
+.r2{
+    width:160px;
+    height:160px;
 }
 
-.second {
-  width: 2px;
-  height: 120px;
-  background: #ff4444;
+.r3{
+    width:110px;
+    height:110px;
+}
+
+/* Numbers */
+
+#numbers span{
+    position:absolute;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    transform:translate(-50%,-50%);
+}
+
+/* Hands */
+
+.hand{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform-origin:bottom center;
+    border-radius:20px;
+}
+
+.hour{
+    width:8px;
+    height:80px;
+    background:#FFD700;
+    margin-left:-4px;
+    margin-top:-80px;
+}
+
+.minute{
+    width:5px;
+    height:105px;
+    background:#00FF7F;
+    margin-left:-2.5px;
+    margin-top:-105px;
+}
+
+.second{
+    width:4px;
+    height:120px;
+    background:#FF1493;
+    margin-left:-2px;
+    margin-top:-120px;
+}
+
+.tip{
+    position:absolute;
+    width:12px;
+    height:12px;
+    background:#FF1493;
+    border-radius:50%;
+    left:50%;
+    transform:translateX(-50%);
+    top:-6px;
+    box-shadow:0 0 15px #ff1493;
+}
+
+/* Center */
+
+.center{
+    position:absolute;
+    width:14px;
+    height:14px;
+    border:3px solid #fff;
+    background:#2f343d;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:100;
+}
+
+/* Decorative Dots */
+
+.dot{
+    position:absolute;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+}
+
+.yellow{
+    background:#FFD700;
+    top:65px;
+    left:175px;
+    box-shadow:0 0 15px #FFD700;
+}
+
+.green{
+    background:#00FF4C;
+    top:85px;
+    right:55px;
+    box-shadow:0 0 15px #00FF4C;
+}
+
+.pink{
+    background:#FF2D86;
+    bottom:95px;
+    right:118px;
+    box-shadow:0 0 15px #FF2D86;
+}
+
+/* Digital */
+
+.digital{
+    margin-top:28px;
+    background:#2f343d;
+    border-radius:40px;
+    padding:15px 28px;
+    box-shadow:
+        inset 4px 4px 10px #404751,
+        inset -4px -4px 10px #23272e,
+        5px 5px 15px #1a1d22;
+    font-family:monospace;
+    font-size:24px;
+    font-weight:bold;
+}
+
+#hh{
+    color:#FF1493;
+}
+
+.colon,#mm{
+    color:#FFD700;
+}
+
+#ss{
+    color:#00FF7F;
+    margin-left:10px;
+}
+
+#ampm{
+    color:#fff;
+    font-size:18px;
+    margin-left:12px;
+}
+
+@media(max-width:500px){
+
+.container{
+    width:95%;
+}
+
+.clock{
+    width:300px;
+    height:300px;
+}
+
 }
